@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="ContextualTriggers.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ContextualTriggers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ActivityVisualStateGroup">
+                <VisualState x:Name="Idle">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Idle" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Idle" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Stationary">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Stationary" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Stationary" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Fidgeting">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Fidgeting" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Fidgeting" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Walking">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Walking" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Walking" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Running">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Running" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Running" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="InVehicle">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="InVehicle" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="In vehicle" />
+                        <Setter Target="CurrentActivtyText.FontWeight" Value="Bold" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Biking">
+                    <VisualState.StateTriggers>
+                        <local:ActivityStateTrigger ActivityType="Biking" ActivityReadingConfidence="Low" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CurrentActivtyText.Text" Value="Biking" />
+                        <Setter Target="CurrentActivtyText.FontWeight" Value="Bold" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+            <VisualStateGroup x:Name="ProximityVisualStateGroup">
+                <VisualState x:Name="ObjectDetected">
+                    <VisualState.StateTriggers>
+                        <local:ProximityStateTrigger ObjectDetected="True" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ProximityText.Text" Value="Hello there!" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel>
+            <TextBlock x:Name="CurrentActivityText" Text="Unknown" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock x:Name="ProximityText" Text="No one is near" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </StackPanel>
+
+    </Grid>
+</Page>
